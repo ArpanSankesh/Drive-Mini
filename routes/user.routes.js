@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const userModel = require('../models/user.model')
 
 const { body, validationResult } = require('express-validator');
 
@@ -29,10 +30,16 @@ router.post('/register',
     }
     
 
-    // const {username, email, password} = req.body;
-    // console.log(username, email, password);
-    console.log(req.body);
-    res.send("CONGRATS")
+    const {username, email, password} = req.body;
+
+    const newUser = userModel.create({
+        username,
+        email,
+        password
+    })
+
+    res.json(newUser)
+    
     
     
 })

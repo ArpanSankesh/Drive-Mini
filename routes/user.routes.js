@@ -9,11 +9,11 @@ router.get('/test', (req, res) =>{
     res.send('TESING THE ROUTES')
 })
 
-router.get('/register', (req, res) => {
+router.get('/regi', (req, res) => {
     res.render('register')
 })
 
-router.post('/register',
+router.post('/regi',
     body('username').trim().isLength({min : 3}),
     body('email').trim().isEmail(),
     body('password').trim().isLength({min : 5}),

@@ -13,19 +13,26 @@ router.get('/register', (req, res) => {
 })
 
 router.post('/register',
-    bode('username').trim().isLength({min : 3}),
+    body('username').trim().isLength({min : 3}),
     body('email').trim().isEmail(),
     body('password').trim().isLength({min : 5}),
     (req, res) => {
 
     const errors = validationResult(req);
     console.log(errors);
+
+    if(!errors.isEmpty()){
+        return res.status(400).json({
+            errors:errors.array(),
+            message:"Invalid Data"
+        })
+    }
     
 
     // const {username, email, password} = req.body;
     // console.log(username, email, password);
     console.log(req.body);
-    res.send(errors)
+    res.send("CONGRATS")
     
     
 })

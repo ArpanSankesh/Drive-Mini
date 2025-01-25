@@ -1,7 +1,9 @@
 const express = require('express');
-const userRouter = require('./routes/user.routes');
 const app = express();
-const path = require('path');
+const userRouter = require('./routes/user.routes');
+
+const dotenv = require('dotenv')
+dotenv.config();
 
 
 app.set('view engine', 'ejs');

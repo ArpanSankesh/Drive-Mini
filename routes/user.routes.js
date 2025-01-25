@@ -17,7 +17,7 @@ router.post('/register',
     body('username').trim().isLength({min : 3}),
     body('email').trim().isEmail(),
     body('password').trim().isLength({min : 5}),
-    (req, res) => {
+    async (req, res) => {
 
     const errors = validationResult(req);
     console.log(errors);
@@ -32,7 +32,7 @@ router.post('/register',
 
     const {username, email, password} = req.body;
 
-    const newUser = userModel.create({
+    const newUser = await userModel.create({
         username,
         email,
         password

@@ -52,7 +52,7 @@ router.get('/login', (req,res) => {
     res.render('login')
 })
 
-router.post('/login', (req, res) => {
+router.post('/login', 
     body('username').trim().isLength({min : 3}),
     body('password').trim().isLength({min : 5}),
 
@@ -88,15 +88,13 @@ router.post('/login', (req, res) => {
         const token = jwt.sign({
             userId:user._id, 
             email:user._email,
-            username:username.username
+            username:user.username
         },process.env.JWT_SECRET)
 
-        res.json({
-            token
-        })
-
+        res.cookie('token', token)
+        res.send("LOGGED IN")
     }
-})
+)
 
 
 module.exports = router;

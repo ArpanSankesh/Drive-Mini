@@ -38,13 +38,53 @@ router.post('/register',
     const newUser = await userModel.create({
         username,
         email,
-        hashPassword
+        password: hashPassword
     })
 
     res.json(newUser)
     
     
     
+})
+
+router.get('/login', (req,res) => {
+    res.render('login')
+})
+
+router.post('/login', (req, res) => {
+    body('username').trim().isLength({min : 3}),
+    body('password').trim().isLength({min : 5}),
+
+    async (req, res) => {
+        
+        const errors = validationResult(req);
+
+        if(!errors.isEmpty()){
+            return res.status(400).json({
+                errors:errors.array(),
+                messsage: 'Invalid data'
+            }
+            )
+        }
+
+        const {username, password} = req.body;
+
+        const user = await userModel.findOne({
+            username: username
+        })
+        if (!user) {
+            return res.status(400).json({
+                message: 'Username Or Password Is Incorrect'
+            })
+        }
+        const isMatch = await bcrypt.compare(password, user.password)
+        if (!isMatch) {
+            return res.status(400).json({
+                message: 'Username Or Password Is Incorrect'
+            })
+        }
+
+    }
 })
 
 

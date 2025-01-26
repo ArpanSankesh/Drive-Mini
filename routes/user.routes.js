@@ -4,16 +4,15 @@ const userModel = require('../models/user.model')
 
 const { body, validationResult } = require('express-validator');
 
-
 router.get('/test', (req, res) =>{
     res.send('TESING THE ROUTES')
 })
 
-router.get('/regi', (req, res) => {
+router.get('/register', (req, res) => {
     res.render('register')
 })
 
-router.post('/regi',
+router.post('/register',
     body('username').trim().isLength({min : 3}),
     body('email').trim().isEmail(),
     body('password').trim().isLength({min : 5}),
@@ -38,7 +37,7 @@ router.post('/regi',
         password
     })
 
-    res.json(newUser)
+    res.send('hello')
     
     
     

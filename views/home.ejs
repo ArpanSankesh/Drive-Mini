@@ -8,19 +8,33 @@
       href="https://cdn.jsdelivr.net/npm/flowbite@3.0.0/dist/flowbite.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <main class="p-4">
-      <button onclick="showPopUp()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Uplode File</button>
+      <button
+        onclick="showPopUp()"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Uplode File
+      </button>
 
-      
-      <div onclick="closePopUp()" class="pop hidden fixed top-0 left-0 w-screen h-screen flex items-center justify-center flex-col backdrop-blur">
-
-       
-
-      <form action="/uplode-file" method="post" enctype="multipart/form-data" class="relative">
-
+      <div
+        onclick="closePopUp()"
+        class="pop hidden fixed top-0 left-0 w-screen h-screen flex items-center justify-center flex-col backdrop-blur"
+      >
+        <form
+          action="/uplode-file"
+          method="post"
+          enctype="multipart/form-data"
+          class="relative"
+        >
           <div class="flex items-center justify-center w-96">
             <label
               for="dropzone-file"
@@ -59,23 +73,31 @@
             </label>
           </div>
 
-          <button   class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 w-full rounded mt-5">Uplode File</button>
+          <button
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 w-full rounded mt-5"
+          >
+            Uplode File
+          </button>
         </form>
-        <button onclick="closePopUp()" class=" text-black text-lg font-bold font-bold py-2 px-15 rounded fixed top-4 right-4"> <i class="fa-solid fa-xmark"></i></button>
-    </div>
-
+        <button
+          onclick="closePopUp()"
+          class="text-black text-lg font-bold font-bold py-2 px-15 rounded fixed top-4 right-4"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.0.0/dist/flowbite.min.js"></script>
     <script>
-        const showPopUp =  () => {
-            const pop = document.querySelector('.pop');
-            pop.style.display='flex';
-        }
-        const closePopUp =  () => {
-            const pop = document.querySelector('.pop');
-            pop.style.display='none';
-        }
+      const showPopUp = () => {
+        const pop = document.querySelector(".pop");
+        pop.style.display = "flex";
+      };
+      const closePopUp = () => {
+        const pop = document.querySelector(".pop");
+        pop.style.display = "none";
+      };
     </script>
   </body>
 </html>
